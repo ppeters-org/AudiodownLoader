@@ -1,4 +1,4 @@
-# youtube-audio-downloader
+# AudioDownloader
 
 A cross-platform GUI application for downloading audio from YouTube videos and playlists, built with Rust and egui. Supports multiple audio formats and qualities, playlist selection, and clipboard monitoring.
 
@@ -54,14 +54,50 @@ git clone <repository-url>
 cd AudiodownLoader
 ```
 
-### Build the application
+### Using Makefile (Recommended)
+
+The project includes a Makefile with convenient targets:
+
 ```bash
-cargo build
+# Build in release mode
+make build
+
+# Run the application
+make run
+
+# Clean build artifacts
+make clean
+
+# Run tests
+make test
+
+# Create macOS .app and .dmg bundles
+make dmg
+
+# Install to /Applications (macOS only)
+make install
+
+# Show help
+make help
 ```
 
-### Run the application
+### Manual Build
+
+If you prefer to use Cargo directly:
+
 ```bash
+# Debug build
+cargo build
+
+# Release build
+cargo build --release
+
+# Run the application
 cargo run
+cargo run --release
+
+# Install to ~/.cargo/bin
+cargo install --path .
 ```
 
 ## Usage
@@ -72,19 +108,19 @@ The application supports command-line arguments:
 
 ```bash
 # Download audio from a URL
-yt-audio-downloader --url "https://youtube.com/watch?v=..."
+AudioDownloader --url "https://youtube.com/watch?v=..."
 
 # Specify download path
- yt-audio-downloader --download-path "/path/to/downloads"
+AudioDownloader --download-path "/path/to/downloads"
 
 # Choose audio format and quality
-yt-audio-downloader --format mp3 --quality 256
+AudioDownloader --format mp3 --quality 256
 
 # Limit number of tracks
-yt-audio-downloader --max-tracks 5
+AudioDownloader --max-tracks 5
 
 # Save video files as well
-yt-audio-downloader --save-videos
+AudioDownloader --save-videos
 ```
 
 ### GUI Usage
@@ -194,21 +230,38 @@ AudiodownLoader/
 │   ├── clipboard.rs     # Clipboard monitoring
 │   └── downloader.rs    # Download engine
 ├── Cargo.toml           # Dependencies
+├── Makefile             # Build and installation targets
 └── README.md
 ```
 
 ### Building from Source
 
 ```bash
-# Debug build
-cargo build
+# Using Makefile (recommended)
+make build      # Release build
+make run        # Run in debug mode
+make test       # Run tests
 
-# Release build
-cargo build --release
-
-# Run in release mode
-cargo run --release
+# Manual Cargo commands
+cargo build                    # Debug build
+cargo build --release          # Release build
+cargo run                      # Run in debug mode
+cargo run --release            # Run in release mode
+cargo install --path .         # Install to ~/.cargo/bin
 ```
+
+### macOS Distribution
+
+To create a distributable macOS application:
+
+```bash
+make dmg        # Create .app and .dmg bundles
+make install    # Install to /Applications
+```
+
+This will create:
+- `target/release/bundle/osx/AudioDownloader.app`
+- `target/release/bundle/dmg/AudioDownloader.dmg`
 
 ### Dependencies
 
