@@ -4276,7 +4276,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "yt-audio-downloader"
+name = "youtube-audio-downloader"
 version = "0.1.0"
 dependencies = [
  "arboard",

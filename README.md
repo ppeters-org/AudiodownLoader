@@ -1,4 +1,4 @@
-# yt-audio-downloader
+# youtube-audio-downloader
 
 A cross-platform GUI application for downloading audio from YouTube videos and playlists, built with Rust and egui. Supports multiple audio formats and qualities, playlist selection, and clipboard monitoring.
 
