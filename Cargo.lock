@@ -3,6 +3,19 @@
 version = 4
 
 [[package]]
+name = "AudioDownloader"
+version = "0.1.0"
+dependencies = [
+ "arboard",
+ "clap",
+ "directories",
+ "eframe",
+ "rfd",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "ab_glyph"
 version = "0.2.32"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4273,19 +4286,6 @@ dependencies = [
  "quote",
  "syn 3.0.10",
  "synstructure",
-]
-
-[[package]]
-name = "youtube-audio-downloader"
-version = "0.1.0"
-dependencies = [
- "arboard",
- "clap",
- "directories",
- "eframe",
- "rfd",
- "serde",
- "serde_json",
 ]
 
 [[package]]
