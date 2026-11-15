@@ -6,7 +6,7 @@ edition = "2021"
 [package.metadata.bundle]
 name = "AudioDownloader"
 identifier = "com.AudioDownloader.app"
-icon = ["assets/AudioDownloader_icon.png"]
+icon = ["assets/AudioDownloader.icns"]
 category = "Utility"
 short_description = "A GUI app that downloads audio from YouTube."
 long_description = "A GUI app that downloads audio from YouTube with playlist support, clipboard monitoring, and multiple format options."

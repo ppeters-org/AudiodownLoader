@@ -79,9 +79,13 @@ fn main() -> eframe::Result<()> {
     }
     cfg.save();
 
+    let icon = eframe::icon_data::from_png_bytes(include_bytes!("../assets/AudioDownloader.png"))
+        .unwrap_or_default();
+
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_title("YouTube Audio Downloader")
+            .with_icon(icon)
             .with_position([100.0, 100.0])
             .with_inner_size([800.0, 820.0])
             .with_min_inner_size([800.0, 480.0]),
