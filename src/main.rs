@@ -4,6 +4,7 @@ mod app;
 mod clipboard;
 mod config;
 mod downloader;
+mod extpath;
 
 use clap::Parser;
 use config::Config;
@@ -56,6 +57,7 @@ fn resolve_download_path(arg: Option<&str>, cfg: &Config) -> PathBuf {
 }
 
 fn main() -> eframe::Result<()> {
+    extpath::extend_path();
     let args = Args::parse();
     let mut cfg = Config::load();
 
