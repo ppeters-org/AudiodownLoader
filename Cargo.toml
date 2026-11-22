@@ -5,8 +5,8 @@ edition = "2021"
 
 [package.metadata.bundle]
 name = "AudioDownloader"
-identifier = "com.AudioDownloader.app"
-icon = ["assets/AudioDownloader.icns"]
+identifier = "com.Audiodownloader.app"
+icon = ["assets/AudioDownloader_icon.icns"]
 category = "Utility"
 short_description = "A GUI app that downloads audio from YouTube."
 long_description = "A GUI app that downloads audio from YouTube with playlist support, clipboard monitoring, and multiple format options."
@@ -19,6 +19,7 @@ clap = { version = "4", features = ["derive"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 directories = "5"
+image = "0.25.10"
 
 [profile.release]
 opt-level = 3

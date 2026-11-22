@@ -8,7 +8,7 @@ mod extpath;
 
 use clap::Parser;
 use config::Config;
-use eframe::egui;
+use eframe::{egui};
 use std::path::{Path, PathBuf};
 
 #[derive(Parser)]
@@ -81,18 +81,30 @@ fn main() -> eframe::Result<()> {
     }
     cfg.save();
 
-    let icon = eframe::icon_data::from_png_bytes(include_bytes!("../assets/AudioDownloader.png"))
-        .unwrap_or_default();
+    let icon_path = Path::new(env!("CARGO_MANIFEST_DIR")).join("assets/AudioDownloader_icon.png");
+    let icon = std::fs::read(&icon_path)
+        .ok()
+        .and_then(|icon_bytes| {
+            let image = image::load_from_memory(&icon_bytes).ok()?;
+            let rgba = image.to_rgba8();
+            let (width, height) = rgba.dimensions();
+            Some(egui::IconData {
+                rgba: rgba.into_raw(),
+                width,
+                height,
+            })
+        });
 
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
-            .with_title("YouTube Audio Downloader")
-            .with_icon(icon)
+            .with_title("Video Downloader")
             .with_position([100.0, 100.0])
-            .with_inner_size([800.0, 820.0])
-            .with_min_inner_size([800.0, 480.0]),
+            .with_inner_size([600.0, 480.0])
+            .with_min_inner_size([500.0, 400.0])
+            .with_icon(icon.unwrap_or_default()),
         ..Default::default()
     };
+
     eframe::run_native(
         "YouTube Audio Downloader",
         options,
